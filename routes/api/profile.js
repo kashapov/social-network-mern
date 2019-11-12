@@ -13,10 +13,9 @@ const User = require('../../models/User');
 // @access  Private
 router.get('/me', auth, async (req, res) => {
   try {
-    const profile = await Profile.findOne({ user: req.user.id }).populate(
-      'user',
-      ['name', 'avatar']
-    );
+    const profile = await Profile.findOne({
+      user: req.user.id,
+    }).populate('user', ['name', 'avatar']);
 
     if (!profile) {
       return res.status(400).json({ msg: 'There is no profile for this user' });
@@ -95,7 +94,7 @@ router.post(
         profile = await Profile.findOneAndUpdate(
           { user: req.user.id },
           { $set: profileFields },
-          { new: true }
+          { new: true },
         );
 
         return res.json(profile);
@@ -110,7 +109,7 @@ router.post(
       console.error(error.message);
       res.status(500).send('Server Error');
     }
-  }
+  },
 );
 
 // @route   GET api/profile
@@ -221,7 +220,7 @@ router.put(
       console.error(error.message);
       res.status(500).send('Server Error');
     }
-  }
+  },
 );
 
 // @route   DELETE api/profile/experience/:exp_id
@@ -308,7 +307,7 @@ router.put(
       console.error(error.message);
       res.status(500).send('Server Error');
     }
-  }
+  },
 );
 
 // @route   DELETE api/profile/education/:edu_id
@@ -343,7 +342,7 @@ router.get('/github/:username', (req, res) => {
       uri: `https://api.github.com/users/${
         req.params.username
       }/repos?per_page=5&sort=created:asc&client_id=${config.get(
-        'githubClientId'
+        'githubClientId',
       )}&client_secret=${config.get('githubSecret')}`,
       method: 'GET',
       headers: { 'user-agent': 'node.js' },

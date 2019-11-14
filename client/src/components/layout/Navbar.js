@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCode } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
   return (
     <nav className="navbar bg-dark">
       <h1>
         <Link to="/">
-          <i class="fas fa-code"></i> Social Network For Developers
+          <FontAwesomeIcon icon={faCode} /> Social Network For Developers
         </Link>
       </h1>
       <ul>

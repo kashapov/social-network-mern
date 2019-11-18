@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCode, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCode,
+  faSignOutAlt,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
 
 import { logout } from '../../actions/auth';
 
@@ -12,7 +16,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul>
       <li>
-        <Link to="#">Developers</Link>
+        <Link to="/dashboard">
+          <FontAwesomeIcon icon={faUser} /> Dashboard
+        </Link>
       </li>
       <li>
         <a onClick={logout} href="#!">

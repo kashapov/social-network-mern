@@ -10,6 +10,7 @@ import Register from './components/auth/Register';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 import CreteProfile from './components/profile-form/CreateProfile';
+import EditProfile from './components/profile-form/EditProfile';
 import PrivateRoute from './components/routing/PrivateRoute';
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
@@ -41,6 +42,11 @@ const App = () => {
                 exact
                 path="/create-profile"
                 component={CreteProfile}
+              />
+              <PrivateRoute
+                exact
+                path="/edit-profile"
+                component={EditProfile}
               />
             </Switch>
           </section>
